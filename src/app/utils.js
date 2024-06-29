@@ -15,7 +15,6 @@ export const isVisible = function (ele, container) {
     const containerTop = container.scrollTop;
     const containerBottom = containerTop + container.clientHeight;
 
-    console.log(container.scrollTop)
     // The element is fully visible in the container
     /* return (
         (eleTop >= containerTop && eleBottom <= containerBottom) ||
@@ -50,8 +49,6 @@ export const connect = (id1, id2, conatinerId1, conatinerId2, color, thickness) 
 
   const div1Pos = isVisible(div1, container1);
   const div2Pos = isVisible(div2, container2);
-
-  console.log("div1Pos", div1Pos, "div2Pos", div2Pos)
 
   let off1 = getOffset(div1Pos === 0 ? div1 : container1);
   let off2 = getOffset(div2Pos === 0 ? div2 : container2);

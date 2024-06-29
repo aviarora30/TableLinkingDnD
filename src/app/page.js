@@ -80,10 +80,8 @@ export default function Home() {
   const [links, setLinks] = useState({});
   const currentDraggedItem = useRef(null);
 
-  useEffect(() => {
-    setLinks((prev) => {
-      return {...links} 
-    });
+  useEffect(()=>{
+    setLinks({...links});
   },[droppedItems])
 
   const tableDropped = useCallback(
@@ -114,6 +112,7 @@ export default function Home() {
             return true;
           });
         });
+
         setLinks(newLinks);
         setDroppedItems(newDroppedItems);
       }
