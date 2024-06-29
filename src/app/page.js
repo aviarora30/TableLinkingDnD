@@ -76,7 +76,7 @@ export const DragContext = createContext();
 
 export default function Home() {
   const { data, error } = useSWR("/api", fetcher);
-  const [droppedItems, setDroppedItems] = useState(temp/* {} */);
+  const [droppedItems, setDroppedItems] = useState({});
   const [links, setLinks] = useState({});
   const currentDraggedItem = useRef(null);
 
