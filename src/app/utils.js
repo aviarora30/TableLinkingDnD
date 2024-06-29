@@ -52,12 +52,9 @@ export const connect = (id1, id2, conatinerId1, conatinerId2, color, thickness) 
 
   let off1 = getOffset(div1Pos === 0 ? div1 : container1);
   let off2 = getOffset(div2Pos === 0 ? div2 : container2);
-
-  if(off1.left > off2.left) {
-    [off1, off2] = [off2, off1]
-  }
+  
   const margin = 10
-  const x1 = off1.left + off1.width;
+  let x1 = off1.left;
   let y1 = off1.top + off1.height / 2;
   if(div1Pos < 0) {
     y1 = off1.top + off1.height + margin;
@@ -65,12 +62,18 @@ export const connect = (id1, id2, conatinerId1, conatinerId2, color, thickness) 
     y1 = off1.top - margin;
   }
 
-  const x2 = off2.left;
+  let x2 = off2.left;
   let y2 = off2.top + off2.height / 2;
   if(div2Pos < 0) {
     y2 = off2.top + off2.height + margin;
   } else if(div2Pos > 0) {
     y2 = off2.top - margin;
+  }
+
+  if(off1.left > off2.left) {
+    x2 += off2.width
+  } else {
+    x1 += off1.width
   }
 
   const length = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
